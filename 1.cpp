@@ -9,7 +9,7 @@ struct Order{
 	//string Instrument;
 };
 
-Order ParsOrder(string s){
+Order ParsOrder(string s){//обработка строки
 	int sID=0,sQty=0;
 	double sPrice=0.0,dr=0.0;
 	char sside='N';
@@ -63,7 +63,7 @@ int main(){
 	TID=0;
 	while(input!="exit"){
 		if(input[0]=='O'){
-			NewOrder=ParsOrder(input);//заявка
+			NewOrder=ParsOrder(input);////обработка строки-заявки
 			if(NewOrder.side=='B'){//хочет купить
 				if(OrdersID.size()>0 && OrderS.size()>0){
 					minQ = OrderS.begin();//минимальная продажа
@@ -94,8 +94,8 @@ int main(){
 							OrderS.erase (minQ);
 							OrdersID.erase (tempOrder.ID);
 							if(OrderS.size()>0){
-								minQ = OrderS.begin();//обработку NULL доделать
-								tempOrder = (minQ->second);//обработку NULL доделать					
+								minQ = OrderS.begin();
+								tempOrder = (minQ->second);				
 							}
 							else{
 								//break;//вроде норм
@@ -140,8 +140,8 @@ int main(){
 							OrderB.erase (maxQ);
 							OrdersID.erase (tempOrder.ID);
 							if(OrderB.size()>0){
-								maxQ = prev(OrderB.end());//обработку NULL доделать
-								tempOrder = (maxQ->second);//обработку NULL доделать							
+								maxQ = prev(OrderB.end());
+								tempOrder = (maxQ->second);							
 							}
 							else{
 								//break;//вроде норм
@@ -157,7 +157,7 @@ int main(){
 				}
 			}
 		}
-		if(input[0]=='C'){		//удаление сделано(вроде)
+		if(input[0]=='C'){		//удаление  по ID
 			for(unsigned int i=2; i<input.length();i++){
 				Buff[i-2]=input[i]-48;
 			}	
